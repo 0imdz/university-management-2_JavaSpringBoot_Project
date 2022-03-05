@@ -1,0 +1,10 @@
+0#Bases de Datos#Primero#0#Primero
+1#Inglés#Primero#0#Primero
+2#Historia#Cuarto#15#Primero
+3#Filosofía#Primero#15#Primero
+5#Matemáticas#Primero#15#Primero
+7#Lengua Castellana#Primero#16#Primero
+8#Francés#Primero#0#Primero
+9#Algoritmia#Primero#15#Primero
+4#Física#Primero#16#Primero
+6#Diseño gráfico#Tercero#15#Segundo

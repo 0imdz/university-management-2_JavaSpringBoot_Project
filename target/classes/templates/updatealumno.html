@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Insert title here</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link th:href="@{/updatealumno.css}" rel="stylesheet"/>
+    <!--    <link th:href="@{/css/styles.css}" rel="stylesheet" id="bootstrap-css" />-->
+</head>
+<body>
+
+    <div id="login">
+
+        <nav style="background-color: black;padding: 5vh;font-family: Montserrat;border-bottom: 1px solid #004460;">
+            <ul class="nav justify-content-center"; style="font-size: 2vh">
+                <li class="nav-item">
+                    <a style="color: white" class="nav-link" href="/cuibitcoin/inicio">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: white" class="nav-link" href="/cuibitcoin/mostrarasignaturas">Mostrar Asignaturas</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: white" class="nav-link" href="/cuibitcoin/mostrar">Mostrar Alumnos</a>
+                </li>
+                <li th:object="${usuario10}" th:if="${usuario10.getTipo()=='admin'}" class="nav-item">
+                    <a style="color: white" class="nav-link" href="/cuibitcoin/nuevoalumnoform">Añadir Alumno</a>
+                </li>
+                <li th:object="${usuario10}" th:if="${usuario10.getTipo()=='admin'}" class="nav-item">
+                    <a style="color: white" class="nav-link" href="/cuibitcoin/nuevaasignaturaform">Añadir Asignatura</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: yellow" class="nav-link" href="#" th:object="${usuario10}" th:text="' | '+${usuario10.getNombreusuario()}"></a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+
+                        <form action="#" th:action="@{/cuibitcoin/modificacionalumnorealizada}" th:object="${alumno}" method="post" id="login-form" style="color: black" class="form">
+
+                            <h1 style="color: #2f2f2f">Modificaciones.</h1>
+                            <hr></hr>
+
+                            <input type="hidden" th:field="${alumno.id}" value="${alumno.id}" readonly="readonly">
+
+                            <input type="hidden" th:field="${alumno.asignaturaMatricula}" value="${alumno.asignaturaMatricula}" readonly="readonly">
+
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                </br>
+                                <label class="error" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></label>
+                                <br/>
+                                <input th:field="${alumno.nombre}" value="${alumno.nombre}" type="text" class="form-control"
+                                       style="background-color: black; border-radius:0px; color: #90AEDA; font-family: Montserrat"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Apellidos</label>
+                                </br>
+                                <label class="error" th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}"></label>
+                                <br/>
+                                <input th:field="${alumno.apellidos}" value="${alumno.apellidos}" type="text" class="form-control"
+                                       style="background-color: black; border-radius:0px; color: #90AEDA; font-family: Montserrat"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Dirección</label>
+                                </br>
+                                <label class="error" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></label>
+                                <br/>
+                                <input th:field="${alumno.direccion}" value="${alumno.direccion}" type="text" class="form-control"
+                                       style="background-color: black; border-radius:0px; color: #90AEDA; font-family: Montserrat"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Localidad</label>
+                                </br>
+                                <label class="error" th:if="${#fields.hasErrors('localidad')}" th:errors="*{localidad}"></label>
+                                <br/>
+                                <input th:field="${alumno.localidad}" value="${alumno.localidad}" type="text" class="form-control"
+                                       style="background-color: black; border-radius:0px; color: #90AEDA; font-family: Montserrat"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Provincia</label>
+                                </br>
+                                <label class="error" th:if="${#fields.hasErrors('provincia')}" th:errors="*{provincia}"></label>
+                                <br/>
+                                <input th:field="${alumno.provincia}" value="${alumno.provincia}" type="text" class="form-control"
+                                       style="background-color: black; border-radius:0px; color: #90AEDA; font-family: Montserrat"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>País</label>
+                                </br>
+                                <label class="error" th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></label>
+                                <br/>
+                                <input th:field="${alumno.pais}" value="${alumno.pais}" type="text" class="form-control"
+                                       style="background-color: black; border-radius:0px; color: #90AEDA; font-family: Montserrat"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Teléfono</label>
+                                </br>
+                                <label class="error" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></label>
+                                <br/>
+                                <input th:field="${alumno.telefono}" value="${alumno.telefono}" type="text" class="form-control"
+                                       style="background-color: black; border-radius:0px; color: #90AEDA; font-family: Montserrat"/>
+                            </div>
+
+                            <div class="form-group" style="text-align:center; font-family: Montserrat;">
+                                <input type="submit"
+                                       style="background-color: #90AEDA; color: black; margin-top: 20px; border-radius: 0px; width: 100%"
+                                       class="btn botonfin" value="Finalizar"/>
+                                <br/>
+                            </div>
+                        </form>
+
+                        <div class="form-group" style="text-align:center; font-family: Montserrat;">
+                            <a href="/cuibitcoin/inicio">
+                                <button style="text-align: center; border: 1px solid white; background-color: black; color: white; margin-top: 20px; border-radius: 0px;"
+                                        class="btn botonvolver">Volver
+                                </button>
+                            </a>
+                        </div>
+                        <br/>
+                        <br/>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

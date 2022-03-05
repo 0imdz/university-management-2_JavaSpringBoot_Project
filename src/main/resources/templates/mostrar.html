@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Insert title here</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"/>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link th:href="@{/mostrar.css}" rel="stylesheet"/>
+    <!--    <link th:href="@{/css/styles.css}" rel="stylesheet" id="bootstrap-css" />-->
+</head>
+<body>
+
+    <nav style="background-color: black;padding: 5vh;font-family: Montserrat;border-bottom: 1px solid #004460;">
+        <ul class="nav justify-content-center"; style="font-size: 2vh">
+            <li class="nav-item">
+                <a style="color: white" class="nav-link" href="/cuibitcoin/inicio">Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white" class="nav-link" href="/cuibitcoin/mostrarasignaturas">Mostrar Asignaturas</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: white" class="nav-link" href="/cuibitcoin/mostrar">Mostrar Alumnos</a>
+            </li>
+            <li th:object="${usuario10}" th:if="${usuario10.getTipo()=='admin'}" class="nav-item">
+                <a style="color: white" class="nav-link" href="/cuibitcoin/nuevoalumnoform">Añadir Alumno</a>
+            </li>
+            <li th:object="${usuario10}" th:if="${usuario10.getTipo()=='admin'}" class="nav-item">
+                <a style="color: white" class="nav-link" href="/cuibitcoin/nuevaasignaturaform">Añadir Asignatura</a>
+            </li>
+            <li class="nav-item">
+                <a style="color: yellow" class="nav-link" href="#" th:object="${usuario10}" th:text="' | '+${usuario10.getNombreusuario()}"></a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container" style="margin-top: 2%">
+
+        <div style="float: left">
+            <h1>Alumnos matriculados.</h1>
+            <hr></hr>
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Dirección</th>
+                    <th>Localidad</th>
+                    <th>Provincia</th>
+                    <th>País</th>
+                    <th>Teléfono</th>
+                    <th>Asignatura/s</th>
+                    <th th:object="${usuario10}" th:if="${usuario10.getTipo()=='admin'}">Eliminar</th>
+                    <th th:object="${usuario10}" th:if="${usuario10.getTipo()=='admin'}"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <form action="#" th:action="@{/cuibitcoin/borrar}" method="post">
+                    <tr th:each="alumno : ${listaAlumnos}">
+                        <td><span th:text="${alumno.nombre}"></span></td>
+                        <td><span th:text="${alumno.apellidos}"></span></td>
+                        <td><span th:text="${alumno.direccion}"></span></td>
+                        <td><span th:text="${alumno.localidad}"></span></td>
+                        <td><span th:text="${alumno.provincia}"></span></td>
+                        <td><span th:text="${alumno.pais}"></span></td>
+                        <td><span th:text="${alumno.telefono}"></span></td>
+
+                        <td><span th:text="${alumno.asignaturaMatricula}"></span></td>
+
+                        <td th:object="${usuario10}" th:if="${usuario10.getTipo()=='admin'}"><input type="checkbox" th:value="${alumno.id}" th:name="alumnosSeleccionados"/></td>
+                        <td th:object="${usuario10}" th:if="${usuario10.getTipo()=='admin'}"><a th:href="@{/cuibitcoin/buscaralumno/}+${alumno.id}">Editar</a></td>
+
+                    </tr>
+                    <div th:object="${usuario10}" th:if="${usuario10.getTipo()=='admin'}" class="form-group" style="text-align:center; font-family: Montserrat; float: right">
+                        <p style="text-align: right"><input type="submit" style="text-align: center; border: 1px solid white; background-color: black; color: white; margin-top: 20px; border-radius: 0px; width: 200px; margin-bottom: 15px" value="Eliminar seleccionados" class="btn botonvolver" /> </p>
+                    </div>
+                </form>
+            </tbody>
+        </table>
+
+<!--        <div class="form-group" style="text-align:left; font-family: Montserrat;">-->
+<!--            <a th:href="@{/cuibitcoin/inicio}">-->
+<!--                <button style="text-align: center; border: 1px solid white; background-color: black; color: white; margin-top: 20px; border-radius: 0px;"-->
+<!--                        class="btn botonvolver">Volver</button>-->
+<!--            </a>-->
+<!--        </div>-->
+    </div>
+</body>
+</html>
