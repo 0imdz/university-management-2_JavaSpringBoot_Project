@@ -82,13 +82,8 @@ public class AsignaturaController {
     public String borrar(@RequestParam("asignaturasSeleccionadas") ArrayList<Integer> asignaturasSeleccionadas,
                          Model model) {
 
-        if(asignaturaService.checkCantidadAsignaturas()==true){
             asignaturaService.eliminarAsignaturas(asignaturasSeleccionadas);
             return "redirect:/cuibitcoin/mostrarasignaturas";
-        }else {
-            model.addAttribute("mensaje", "No pueden haber menos de 10 asignaturas en la plataforma.");
-            return "mensajes_usuarios";
-        }
     }
 
     //MODIFICAR
