@@ -26,7 +26,7 @@ public class AsignaturaServiceImpl implements AsignaturaService {
         BufferedReader ficheroBuf = null;
 
         try {
-            f = new File("practicaCUIBitcoin\\src\\main\\resources\\asignaturas.txt");
+            f = new File("src\\main\\resources\\asignaturas.txt");
             ficheroLeer = new FileReader(f);
             ficheroBuf = new BufferedReader(ficheroLeer);
             asignaturas = new ArrayList();
@@ -77,7 +77,7 @@ public class AsignaturaServiceImpl implements AsignaturaService {
         listarAsignaturas();
 
         try {
-            FileWriter fw = new FileWriter("practicaCUIBitcoin\\src\\main\\resources\\asignaturas.txt", true);
+            FileWriter fw = new FileWriter("src\\main\\resources\\asignaturas.txt", true);
 
             int generado=0;
 
@@ -139,7 +139,7 @@ public class AsignaturaServiceImpl implements AsignaturaService {
         }
 
         try {
-            FileWriter fw = new FileWriter("practicaCUIBitcoin\\src\\main\\resources\\asignaturas.txt");
+            FileWriter fw = new FileWriter("src\\main\\resources\\asignaturas.txt");
 
             for(int i=0; i< asignaturas.size(); i++){
                 fw.write(Integer.toString(asignaturas.get(i).getId()));
@@ -203,7 +203,7 @@ public class AsignaturaServiceImpl implements AsignaturaService {
         }
 
         try {
-            FileWriter fw = new FileWriter("practicaCUIBitcoin\\src\\main\\resources\\asignaturas.txt");
+            FileWriter fw = new FileWriter("src\\main\\resources\\asignaturas.txt");
 
             for(int i=0; i< asignaturas.size(); i++){
                 fw.write(Integer.toString(asignaturas.get(i).getId()));
