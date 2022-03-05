@@ -23,6 +23,4 @@ public interface AsignaturaService {
 
     //EJECUTAR MODIFCACIÓN
     public abstract void modificarAsignatura(Asignatura asignatura);
-
-    public boolean checkCantidadAsignaturas();
 }

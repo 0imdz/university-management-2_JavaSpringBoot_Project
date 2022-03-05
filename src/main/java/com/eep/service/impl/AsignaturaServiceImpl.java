@@ -112,18 +112,6 @@ public class AsignaturaServiceImpl implements AsignaturaService {
         }
     }
 
-//    @Override
-//    public boolean checkCantidadAsignaturas(){
-//
-//        listarAsignaturas();
-//
-//        if(asignaturas.size()>=11){
-//            return true;
-//        }else{
-//            return false;
-//        }
-//    }
-
     //ELIMINAR ASIGNATURAS
     @Override
     public void eliminarAsignaturas(ArrayList<Integer> asignaturasSeleccionadas) {
