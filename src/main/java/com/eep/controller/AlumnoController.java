@@ -191,4 +191,27 @@ public class AlumnoController {
             return "redirect:/cuibitcoin/iniciosesion";
         }
     }
+
+    //MOSTRAR USUARIOS DADOS DE ALTA
+    @GetMapping("/mostrarusuarios")
+    public String mostrarusuarios(Model model){
+
+        //PARA QUE SE VEA EL NOMBRE DEL USUARIO EN EL NAV
+        Usuarios usuario10=usuariosService.devolucionUsuarioCompletoNoUsernameAndPassword();
+        model.addAttribute("usuario10", usuario10);
+
+        if(usuariosService.permitirAcceso()==true){
+            model.addAttribute("listaUsuarios", usuariosService.mostrarUsuarios());
+            return "mostrarusuarios";
+        }else{
+            return "redirect:/cuibitcoin/iniciosesion";
+        }
+    }
+
+    @GetMapping("/borrarusuario/{id}")
+    public String deleteCourse(@PathVariable int id){
+
+        usuariosService.borrarUsuario(id);
+        return "redirect:/cuibitcoin/mostrarusuarios";
+    }
 }

@@ -95,13 +95,21 @@
                                        style="background-color: black; border-radius:0px; color: #90AEDA; font-family: Montserrat"/>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 4vh">
                                 <label>País</label>
                                 </br>
                                 <label class="error" th:if="${#fields.hasErrors('pais')}" th:errors="*{pais}"></label>
                                 <br/>
-                                <input th:field="${alumno.pais}" value="${alumno.pais}" type="text" class="form-control"
-                                       style="background-color: black; border-radius:0px; color: #90AEDA; font-family: Montserrat"/>
+                                <div class="form-group">
+                                    <select th:field="${alumno.pais}" value="${alumno.pais}" style="background-color: black; border-radius:0px; color: #90AEDA; font-family: Montserrat">
+                                        <option value=""></option>
+                                        <option value="ES (+34)">España</option>
+                                        <option value="RU (+00)">Reino Unido</option>
+                                        <option value="AL (+49)">Alemania</option>
+                                        <option value="IT (+39)">Italia</option>
+                                        <option value="SU (+41)">Suiza</option>
+                                    </select>
+                                </div>
                             </div>
 
                             <div class="form-group">

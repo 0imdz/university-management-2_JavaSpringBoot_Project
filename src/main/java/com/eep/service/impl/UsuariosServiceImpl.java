@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("UsuariosService")
 public class UsuariosServiceImpl implements UsuariosService{
 
@@ -69,5 +71,17 @@ public class UsuariosServiceImpl implements UsuariosService{
         usuarioLogueado.setNombreusuario("");
         usuarioLogueado.setPassword("");
         usuarioLogueado.setTipo("");
+    }
+
+    @Override
+    public List<Usuarios> mostrarUsuarios(){
+        return usuariosRepository.findAll();
+    }
+
+    @Override
+    public int borrarUsuario(int id) {
+        // TODO Auto-generated method stub
+        usuariosRepository.deleteById(id);
+        return 0;
     }
 }
