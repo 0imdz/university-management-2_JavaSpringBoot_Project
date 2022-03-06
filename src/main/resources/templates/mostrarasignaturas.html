@@ -9,6 +9,38 @@
     <link th:href="@{/mostrarasignaturas.css}" rel="stylesheet"/>
     <!--    <link th:href="@{/css/styles.css}" rel="stylesheet" id="bootstrap-css" />-->
 </head>
+
+<script>
+
+    function checkPulsado(){
+        // Get all input type checkbox as a NodeList
+        var check = document.querySelectorAll('#botonCheck');
+
+        // Convert input type checkbox NodeList to an array
+        var checkArr = Array.from(check);
+
+        let contador=0;
+        for(let i=0; i<checkArr.length; i++){
+            if(checkArr[i].checked){
+                contador=contador+1;
+            }
+        }
+
+        if(contador>=1){
+            const mostrarBoton1=document.getElementById('botonMultiple');
+            mostrarBoton1.style.display="block";
+        }
+
+        if(contador==0){
+            const mostrarBoton2=document.getElementById('botonMultiple');
+            if(mostrarBoton2.style.display="block"){
+                mostrarBoton2.style.display="none";
+            }
+        }
+    }
+
+</script>
+
 <body>
 
     <nav style="background-color: black;padding: 5vh;font-family: Montserrat;border-bottom: 1px solid #004460;">
@@ -60,13 +92,21 @@
                         <td><span th:text="${asignatura.horas}"></span></td>
                         <td><span th:text="${asignatura.cuatrimestre}"></span></td>
 
-                        <td th:object="${usuario10}" th:if="${usuario10.getTipo()=='admin'}"><input type="checkbox" th:value="${asignatura.id}" th:name="asignaturasSeleccionadas"/></td>
+                        <td th:object="${usuario10}" th:if="${usuario10.getTipo()=='admin'}">
+                            <input type="checkbox"
+                                   id="botonCheck" onClick="checkPulsado()"
+                                   th:value="${asignatura.id}" th:name="asignaturasSeleccionadas"/>
+                        </td>
 
-                        <td th:object="${usuario10}" th:if="${usuario10.getTipo()=='admin'}"><a th:href="@{/cuibitcoin/busquedaasignatura/}+${asignatura.id}">Editar</a></td>
+                        <td th:object="${usuario10}" th:if="${usuario10.getTipo()=='admin'}">
+                            <a th:href="@{/cuibitcoin/busquedaasignatura/}+${asignatura.id}">Editar</a>
+                        </td>
 
                     </tr>
                     <div th:object="${usuario10}" th:if="${usuario10.getTipo()=='admin'}" class="form-group" style="text-align:center; font-family: Montserrat; float: right">
-                        <p style="text-align: right"><input type="submit" style="text-align: center; border: 1px solid white; background-color: black; color: white; margin-top: 20px; border-radius: 0px; width: 200px; margin-bottom: 15px" value="Eliminar seleccionados" class="btn botonvolver" /> </p>
+                        <p style="text-align: right">
+                            <input type="submit" id="botonMultiple" style="text-align: center; border: 1px solid white; background-color: black; color: white; margin-top: 20px; border-radius: 0px; width: 200px; margin-bottom: 15px" value="Eliminar seleccionados" class="btn botonvolver" />
+                        </p>
                     </div>
                 </form>
             </tbody>
